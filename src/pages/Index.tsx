@@ -84,13 +84,13 @@ const Index = () => {
     };
   }, [api]);
 
-  // Automatic slideshow - changed from 1 second to 5 seconds
+  // Automatic slideshow - changed to 8 seconds
   useEffect(() => {
     if (!api) return;
     
     const interval = setInterval(() => {
       api.scrollNext();
-    }, 5000); // 5 second delay
+    }, 8000); // 8 second delay
     
     return () => clearInterval(interval);
   }, [api]);
@@ -100,8 +100,8 @@ const Index = () => {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Slideshow Section - improved responsive design */}
-        <section className="relative w-full">
+        {/* Slideshow Section - added horizontal padding */}
+        <section className="relative w-full px-4 sm:px-8 md:px-12 lg:px-16">
           <Carousel
             opts={{ loop: true, align: "start" }}
             className="w-full"
