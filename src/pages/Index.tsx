@@ -84,13 +84,13 @@ const Index = () => {
     };
   }, [api]);
 
-  // Automatic slideshow
+  // Automatic slideshow - changed from 1 second to 5 seconds
   useEffect(() => {
     if (!api) return;
     
     const interval = setInterval(() => {
       api.scrollNext();
-    }, 1000); // 1 second delay
+    }, 5000); // 5 second delay
     
     return () => clearInterval(interval);
   }, [api]);
@@ -100,7 +100,7 @@ const Index = () => {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Slideshow Section */}
+        {/* Slideshow Section - improved responsive design */}
         <section className="relative w-full">
           <Carousel
             opts={{ loop: true, align: "start" }}
@@ -110,7 +110,7 @@ const Index = () => {
             <CarouselContent>
               {slideshowImages.map((image, index) => (
                 <CarouselItem key={index} className="w-full">
-                  <div className="aspect-[16/9] w-full overflow-hidden">
+                  <div className="aspect-[16/9] w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
                     <img 
                       src={image}
                       alt={`Landscape view ${index + 1}`}
@@ -120,7 +120,7 @@ const Index = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2">
+            <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2 z-10">
               {slideshowImages.map((_, index) => (
                 <button
                   key={index}
@@ -135,13 +135,13 @@ const Index = () => {
           </Carousel>
         </section>
 
-        {/* Heading Under Slideshow */}
-        <section className="py-8 text-center">
+        {/* Heading Under Slideshow - improved responsive typography */}
+        <section className="py-4 sm:py-6 md:py-8 text-center">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-serif font-medium text-brand-600">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium text-brand-600">
               Stories from Around the World
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="mt-2 sm:mt-4 text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
               Explore authentic human experiences that connect us across cultures, geographies, and backgrounds
             </p>
           </div>
