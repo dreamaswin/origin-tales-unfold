@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -13,6 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import type { CarouselApi } from "@/components/ui/carousel";
 
 const Index = () => {
   // Mock data for stories
@@ -65,16 +66,34 @@ const Index = () => {
     'https://images.unsplash.com/photo-1458668383970-8ddd3927deed', // landscape photo of mountain alps
   ]);
 
-  // For automatic carousel movement
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // For controlling carousel
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
 
+  // Update current index when carousel changes
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slideshowImages.length);
-    }, 1000); // 1 second delay
+    if (!api) return;
+    
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap());
+    };
+    
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
 
+  // Automatic slideshow
+  useEffect(() => {
+    if (!api) return;
+    
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 1000); // 1 second delay
+    
     return () => clearInterval(interval);
-  }, [slideshowImages.length]);
+  }, [api]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -86,8 +105,7 @@ const Index = () => {
           <Carousel
             opts={{ loop: true, align: "start" }}
             className="w-full"
-            value={currentSlide}
-            onValueChange={setCurrentSlide}
+            setApi={setApi}
           >
             <CarouselContent>
               {slideshowImages.map((image, index) => (
@@ -106,9 +124,9 @@ const Index = () => {
               {slideshowImages.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentSlide(index)}
+                  onClick={() => api?.scrollTo(index)}
                   className={`w-2 h-2 rounded-full ${
-                    index === currentSlide ? "bg-white" : "bg-white/50"
+                    index === current ? "bg-white" : "bg-white/50"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
