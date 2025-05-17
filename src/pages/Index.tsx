@@ -1,11 +1,18 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FeaturedStory from '@/components/FeaturedStory';
 import StoryCard from '@/components/StoryCard';
 import { Button } from '@/components/ui/button';
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Index = () => {
   // Mock data for stories
@@ -49,11 +56,79 @@ const Index = () => {
     },
   ]);
 
+  // Slideshow images
+  const [slideshowImages] = useState([
+    'https://images.unsplash.com/photo-1506744038136-46273834b3fb', // body of water surrounded by trees
+    'https://images.unsplash.com/photo-1500673922987-e212871fec22', // yellow lights between trees
+    'https://images.unsplash.com/photo-1433086966358-54859d0ed716', // gray concrete bridge and waterfalls
+    'https://images.unsplash.com/photo-1482938289607-e9573fc25ebb', // river between mountains
+    'https://images.unsplash.com/photo-1458668383970-8ddd3927deed', // landscape photo of mountain alps
+  ]);
+
+  // For automatic carousel movement
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideshowImages.length);
+    }, 1000); // 1 second delay
+
+    return () => clearInterval(interval);
+  }, [slideshowImages.length]);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
       <main className="flex-grow">
+        {/* Slideshow Section */}
+        <section className="relative w-full">
+          <Carousel
+            opts={{ loop: true, align: "start" }}
+            className="w-full"
+            value={currentSlide}
+            onValueChange={setCurrentSlide}
+          >
+            <CarouselContent>
+              {slideshowImages.map((image, index) => (
+                <CarouselItem key={index} className="w-full">
+                  <div className="aspect-[16/9] w-full overflow-hidden">
+                    <img 
+                      src={image}
+                      alt={`Landscape view ${index + 1}`}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2">
+              {slideshowImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-2 h-2 rounded-full ${
+                    index === currentSlide ? "bg-white" : "bg-white/50"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </Carousel>
+        </section>
+
+        {/* Heading Under Slideshow */}
+        <section className="py-8 text-center">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-serif font-medium text-brand-600">
+              Stories from Around the World
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+              Explore authentic human experiences that connect us across cultures, geographies, and backgrounds
+            </p>
+          </div>
+        </section>
+        
         {/* Hero Section */}
         <section className="bg-brand-50 py-12 md:py-20 lg:py-24">
           <div className="container mx-auto">
