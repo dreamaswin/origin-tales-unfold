@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -75,7 +74,7 @@ const StoryDetail = () => {
       datePublished: 'January 8, 2023',
       category: 'Heritage',
       imageUrl: 'https://images.unsplash.com/photo-1500673922987-e212871fec22',
-      authorBio: 'Hassan El Fasi comes from a long lineage of traditional Moroccan storytellers. For over five decades, he has performed in Marrakech's famous Jemaa el-Fnaa square, preserving ancient tales and oral traditions.',
+      authorBio: "Hassan El Fasi comes from a long lineage of traditional Moroccan storytellers. For over five decades, he has performed in Marrakech's famous Jemaa el-Fnaa square, preserving ancient tales and oral traditions.",
     }
   ]);
   
