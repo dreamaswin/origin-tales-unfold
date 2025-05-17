@@ -16,24 +16,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 40 15% 15%;
 
-    --primary: 28 37% 59%;
+    --primary: 0 100% 50%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 42 25% 63%;
-    --secondary-foreground: 40 15% 15%;
+    --secondary: 0 100% 95%;
+    --secondary-foreground: 0 85% 35%;
 
     --muted: 42 14% 92%;
     --muted-foreground: 40 8% 46%;
 
-    --accent: 35 80% 94%;
-    --accent-foreground: 40 15% 15%;
+    --accent: 0 85% 96%;
+    --accent-foreground: 0 85% 35%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 40 10% 85%;
     --input: 40 10% 85%;
-    --ring: 28 37% 59%;
+    --ring: 0 85% 50%;
 
     --radius: 0.5rem;
 
@@ -57,16 +57,16 @@
     --popover: 40 15% 15%;
     --popover-foreground: 40 10% 90%;
 
-    --primary: 28 37% 59%;
+    --primary: 0 90% 45%;
     --primary-foreground: 40 10% 90%;
 
-    --secondary: 42 25% 35%;
+    --secondary: 0 50% 25%;
     --secondary-foreground: 40 10% 90%;
 
     --muted: 40 15% 20%;
     --muted-foreground: 40 10% 60%;
 
-    --accent: 35 30% 25%;
+    --accent: 0 50% 25%;
     --accent-foreground: 40 10% 90%;
 
     --destructive: 0 62.8% 30.6%;
@@ -74,7 +74,7 @@
 
     --border: 40 15% 25%;
     --input: 40 15% 25%;
-    --ring: 28 37% 49%;
+    --ring: 0 90% 45%;
   }
 }
 
@@ -99,10 +99,25 @@
   }
   
   .story-link::after {
-    @apply content-[''] absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-warmth-500 origin-bottom-right transition-transform duration-300;
+    @apply content-[''] absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-brand-500 origin-bottom-right transition-transform duration-300;
   }
   
   .story-link:hover::after {
     @apply scale-x-100 origin-bottom-left;
+  }
+
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Responsive utilities */
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  
+  .flex-between {
+    @apply flex items-center justify-between;
   }
 }
