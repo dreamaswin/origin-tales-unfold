@@ -1,14 +1,17 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
+
+# Preferred crawl rate
+Crawl-delay: 1
+
+# Important pages
+Allow: /stories
+Allow: /about
+Allow: /shop
+
+# Block any admin or private paths (if they exist in the future)
+Disallow: /admin/
+Disallow: /api/private/
+
+# Sitemap location
+Sitemap: https://origin-tales-unfold.lovable.app/sitemap.xml

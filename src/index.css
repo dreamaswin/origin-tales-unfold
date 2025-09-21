@@ -107,7 +107,27 @@
   }
 
   .container {
-    @apply px-4 sm:px-6 lg:px-8;
+    @apply px-3 sm:px-4 md:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+  
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+  
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+  
+  .text-responsive-base {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+  
+  .spacing-responsive {
+    @apply py-4 sm:py-6 md:py-8 lg:py-12;
+  }
+  
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8;
   }
 }
 
