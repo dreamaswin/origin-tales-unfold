@@ -10,41 +10,41 @@ import Newsletter from '@/components/Newsletter';
 const Index = () => {
   const featuredStory = {
     id: '1',
-    title: 'Finding Home in the Himalayas',
-    excerpt: 'After traveling across three continents, Amara discovers her ancestral roots in a small village nestled in the mountains of Nepal. This is a story of identity, belonging, and the universal quest for connection that transcends borders and time.',
-    author: 'Amara Thapa',
-    location: 'Kathmandu, Nepal',
-    category: 'Identity',
-    imageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+    title: 'Finding Roots in Kerala Backwaters',
+    excerpt: 'After years abroad, Priya returns to her ancestral village in Alleppey to discover her grandmother\'s untold stories of resilience during the floods. A journey of rediscovering Malayalam heritage and the timeless wisdom of Kerala\'s matriarchal traditions.',
+    author: 'Priya Nair',
+    location: 'Alleppey, Kerala',
+    category: 'Heritage',
+    imageUrl: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&auto=format&fit=crop&q=80',
   };
 
   const recentStories = [
     {
       id: '2',
-      title: 'The Last Storyteller of Marrakech',
-      excerpt: 'Hassan is one of the few remaining traditional Moroccan storytellers, preserving ancient tales in the bustling souks of the modern world. His voice carries centuries of cultural wisdom.',
-      author: 'Hassan El Fasi',
-      location: 'Marrakech, Morocco',
-      category: 'Heritage',
-      imageUrl: 'https://images.unsplash.com/photo-1500673922987-e212871fec22',
+      title: 'The Last Theyyam Artist of Kannur',
+      excerpt: 'Raman Master, 72, is one of the few remaining traditional Theyyam performers. His story preserves the ancient ritual art form that connects Kerala to its spiritual roots and ancestral worship.',
+      author: 'K.R. Raman',
+      location: 'Kannur, Kerala',
+      category: 'Tradition',
+      imageUrl: 'https://images.unsplash.com/photo-1588392382834-a891154bca4d?w=600&auto=format&fit=crop&q=80',
     },
     {
       id: '3',
-      title: 'Navigating Two Worlds',
-      excerpt: 'Born to immigrant parents in Brooklyn, Maya reflects on straddling cultural identities and finding strength in diversity. Her journey speaks to millions who call multiple places home.',
-      author: 'Maya Johnson',
-      location: 'New York, USA',
+      title: 'Spices and Stories from Munnar Hills',
+      excerpt: 'Three generations of a family running a spice plantation in Munnar share tales of how cardamom and tea shaped their identity, blending Tamil and Malayalam cultures in the Western Ghats.',
+      author: 'Meera & Family',
+      location: 'Munnar, Kerala',
       category: 'Culture',
-      imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158',
+      imageUrl: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&auto=format&fit=crop&q=80',
     },
     {
       id: '4',
-      title: 'The Ocean Between Us',
-      excerpt: 'After 30 years apart, two sisters reunite across continents and rebuild the connection that time and distance tried to sever. A testament to the enduring power of family bonds.',
-      author: 'Elena & Sofia Moreno',
-      location: 'Madrid, Spain',
-      category: 'Family',
-      imageUrl: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843',
+      title: 'Coconut Climber\'s Philosophy',
+      excerpt: 'Krishnan, a coconut tree climber from Kozhikode, shares his unique perspective on life, sustainability, and the changing landscape of Kerala\'s coastal communities.',
+      author: 'P.K. Krishnan',
+      location: 'Kozhikode, Kerala',
+      category: 'Life',
+      imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format&fit=crop&q=80',
     },
   ];
 
@@ -55,15 +55,13 @@ const Index = () => {
       <main className="flex-grow">
         <HeroSlideshow />
 
-        {/* Section Heading */}
         <section className="spacing-responsive text-center" aria-labelledby="main-heading">
           <div className="container">
             <h2 id="main-heading" className="text-responsive-xl font-serif font-medium text-primary mb-3 sm:mb-4">
-              Stories from Around the World
+              Stories from Kerala - God's Own Country
             </h2>
             <p className="text-responsive-base text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Explore authentic human experiences that connect us across cultures, geographies, and backgrounds. 
-              Each story is a window into the diverse tapestry of human experience.
+              Discover authentic narratives from Kerala's backwaters to hill stations, celebrating Malayalam culture, ancient traditions, and the diverse communities that call Kerala home.
             </p>
           </div>
         </section>
